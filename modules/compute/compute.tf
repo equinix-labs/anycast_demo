@@ -33,18 +33,5 @@ resource "equinix_metal_device" "compute-server" {
   operating_system = var.operating_system
   billing_cycle    = "hourly"
   project_id       = var.project_id
-  user_data        = templatefile("${path.root}/scripts/ping-golf-setup.yaml", { database_url = "${var.database_url}" })
-
-  provisioner "local-exec" {
-    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null scripts/create_bird_conf.sh root@${self.access_public_ipv4}:/root/create_bird_conf.sh"
-  }
-  provisioner "local-exec" {
-    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null scripts/web.go root@${self.access_public_ipv4}:/root/web.go"
-  }
-  provisioner "local-exec" {
-    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null scripts/start.sh root@${self.access_public_ipv4}:/root/start.sh"
-  }
-  provisioner "local-exec" {
-    command = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  root@${self.access_public_ipv4} 'bash /root/start.sh ${var.anycast_ip}  > /dev/null 2>&1 &'"
-  }
+  user_data        = templatefile("${path.root}/scripts/ping-golf-setup.yaml", { database_url = "${var.database_url}", anycast_ip = "${var.anycast_ip}" })
 }
