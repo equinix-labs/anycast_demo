@@ -1,4 +1,5 @@
-# packet_anycast
+# Metal Anycast
+
 Building an Anycast application in 5 minutes on Equinix Metal using Terraform
 
 [Also see my blog: Building a high available Anycast application in 5 minutes on Packet](https://medium.com/@atoonk/building-a-high-available-anycast-application-in-5-minutes-on-packet-198c82eaabc)
