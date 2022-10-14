@@ -42,6 +42,7 @@ module "compute_sv" {
   instance_type = "c3.small.x86"
   metro = "sv" 
   compute_count = "2"
+  database_url = "${var.database_url}"
 }
 
 module "compute_sg" {
@@ -52,6 +53,7 @@ module "compute_sg" {
   instance_type = "c3.small.x86"
   metro = "sg"
   compute_count = "2"
+  database_url = "${var.database_url}"
 }
 
 module "compute_am" {
@@ -62,7 +64,9 @@ module "compute_am" {
   instance_type = "c3.small.x86"
   metro = "am"
   compute_count = "2"
+  database_url = "${var.database_url}"
 }
+
 
 module "compute_ny" {
   source = "./modules/compute"
@@ -72,6 +76,7 @@ module "compute_ny" {
   instance_type = "c3.small.x86"
   metro = "ny"
   compute_count = "2"
+  database_url = "${var.database_url}"
 }
 
 output "anycast_ip" {
