@@ -7,5 +7,6 @@ runcmd:
   - tar -xzvf ./v0.1.4.tar.gz
   - cd ./ping-golf-0.1.4
   - curl --create-dirs -o /root/.postgresql/root.crt -O https://cockroachlabs.cloud/clusters/7397cd10-5173-4134-a91e-e5a8818c10e2/cert
-  - make URL="${database_url} ANYCAST_IP=${anycast_ip}"
+  - rm /etc/bird/bird.conf
+  - make URL="${database_url}" ANYCAST_IP="${anycast_ip}"
   
