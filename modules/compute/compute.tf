@@ -8,6 +8,7 @@ variable "operating_system" {}
 variable "instance_type" {}
 variable "anycast_ip" {}
 variable "database_url" {}
+variable "golf_version" {}
 #variable bgp_password { }
 
 terraform {
@@ -33,5 +34,12 @@ resource "equinix_metal_device" "compute-server" {
   operating_system = var.operating_system
   billing_cycle    = "hourly"
   project_id       = var.project_id
-  user_data        = templatefile("${path.root}/scripts/ping-golf-setup.tftpl", { database_url = "${var.database_url}", anycast_ip = "${var.anycast_ip}" })
+  user_data        = templatefile(
+    "${path.root}/scripts/ping-golf-setup.tftpl",
+    {
+      database_url = "${var.database_url}",
+      anycast_ip   = "${var.anycast_ip}"
+      golf_version = "${var.golf_version}"
+    }
+  )
 }

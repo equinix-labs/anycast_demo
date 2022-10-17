@@ -14,3 +14,9 @@ variable "database_url" {
   type = string
   default = "https://get.from.postgres.provider/"
 }
+
+variable "ping_golf_version" {
+  description = "Version string for what version of ping golf to run"
+  type = string
+  default = "0.1.4"
+}
