@@ -8,3 +8,9 @@ variable "bgp_password" {
     type = string
     default = "xxxx"
 }
+
+variable "database_url" {
+  description = "postgres conneection url"
+  type = string
+  default = "https://get.from.postgres.provider/"
+}
