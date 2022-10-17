@@ -43,6 +43,7 @@ module "compute_sv" {
   metro            = "sv"
   compute_count    = "2"
   database_url     = var.database_url
+  golf_version     = var.ping_golf_version
 }
 
 module "compute_sg" {
@@ -54,6 +55,7 @@ module "compute_sg" {
   metro            = "sg"
   compute_count    = "2"
   database_url     = var.database_url
+  golf_version     = var.ping_golf_version
 }
 
 module "compute_am" {
@@ -65,6 +67,7 @@ module "compute_am" {
   metro            = "am"
   compute_count    = "2"
   database_url     = var.database_url
+  golf_version     = var.ping_golf_version
 }
 
 
@@ -77,6 +80,7 @@ module "compute_ny" {
   metro            = "ny"
   compute_count    = "2"
   database_url     = var.database_url
+  golf_version     = var.ping_golf_version
 }
 
 output "anycast_ip" {
