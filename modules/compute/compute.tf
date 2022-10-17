@@ -33,5 +33,5 @@ resource "equinix_metal_device" "compute-server" {
   operating_system = var.operating_system
   billing_cycle    = "hourly"
   project_id       = var.project_id
-  user_data        = templatefile("${path.root}/scripts/ping-golf-setup.yaml", { database_url = "${var.database_url}", anycast_ip = "${var.anycast_ip}" })
+  user_data        = templatefile("${path.root}/scripts/ping-golf-setup.tftpl", { database_url = "${var.database_url}", anycast_ip = "${var.anycast_ip}" })
 }
