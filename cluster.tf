@@ -16,7 +16,7 @@ provider "equinix" {
 
 # Create project
 resource "equinix_metal_project" "anycast_test" {
-  name = "anycast-test-cobalt"
+  name = "kubecon-ping-golf"
   bgp_config {
     deployment_type = "local"
     #md5 = "${var.bgp_password}"
@@ -41,19 +41,19 @@ module "compute_sv" {
   operating_system = "ubuntu_22_04"
   instance_type    = "c3.small.x86"
   metro            = "sv"
-  compute_count    = "2"
+  compute_count    = "1"
   database_url     = var.database_url
   golf_version     = var.ping_golf_version
 }
 
-module "compute_sg" {
+module "compute_sy" {
   source           = "./modules/compute"
   project_id       = equinix_metal_project.anycast_test.id
   anycast_ip       = equinix_metal_reserved_ip_block.anycast_ip.address
   operating_system = "ubuntu_22_04"
   instance_type    = "c3.small.x86"
-  metro            = "sg"
-  compute_count    = "2"
+  metro            = "sy"
+  compute_count    = "1"
   database_url     = var.database_url
   golf_version     = var.ping_golf_version
 }
@@ -65,20 +65,44 @@ module "compute_am" {
   operating_system = "ubuntu_22_04"
   instance_type    = "c3.small.x86"
   metro            = "am"
-  compute_count    = "2"
+  compute_count    = "1"
   database_url     = var.database_url
   golf_version     = var.ping_golf_version
 }
 
 
-module "compute_ny" {
+module "compute_mt" {
   source           = "./modules/compute"
   project_id       = equinix_metal_project.anycast_test.id
   anycast_ip       = equinix_metal_reserved_ip_block.anycast_ip.address
   operating_system = "ubuntu_22_04"
-  instance_type    = "c3.small.x86"
-  metro            = "ny"
-  compute_count    = "2"
+  instance_type    = "m3.small.x86"
+  metro            = "mt"
+  compute_count    = "1"
+  database_url     = var.database_url
+  golf_version     = var.ping_golf_version
+}
+
+module "compute_sl" {
+  source           = "./modules/compute"
+  project_id       = equinix_metal_project.anycast_test.id
+  anycast_ip       = equinix_metal_reserved_ip_block.anycast_ip.address
+  operating_system = "ubuntu_22_04"
+  instance_type    = "m3.small.x86"
+  metro            = "sl"
+  compute_count    = "1"
+  database_url     = var.database_url
+  golf_version     = var.ping_golf_version
+}
+
+module "compute_sp" {
+  source           = "./modules/compute"
+  project_id       = equinix_metal_project.anycast_test.id
+  anycast_ip       = equinix_metal_reserved_ip_block.anycast_ip.address
+  operating_system = "ubuntu_22_04"
+  instance_type    = "c3.medium.x86"
+  metro            = "sp"
+  compute_count    = "1"
   database_url     = var.database_url
   golf_version     = var.ping_golf_version
 }
